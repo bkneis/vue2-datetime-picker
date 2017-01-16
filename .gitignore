@@ -1,6 +1,5 @@
 .idea/
 node_modules/
-
 .npmignore
 .DS_Store
 npm-debug.log
