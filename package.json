@@ -1,6 +1,6 @@
 {
   "name": "vue2-datetime-picker",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "vue2-datetime-picker is a vue2.0 compatible date time picker component. It is a wrapper for the eonasdan.github.io/bootstrap-datetimepicker.",
   "keywords": [
     "vue",
