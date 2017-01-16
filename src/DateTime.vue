@@ -1,11 +1,9 @@
 <template>
-    <div class="form-group">
-        <div class='input-group date'>
-            <input type='text' class="form-control" />
-            <span class="input-group-addon">
-                <span class="glyphicon glyphicon-calendar"/>
-            </span>
-        </div>
+    <div class='input-group date'>
+        <input type='text' class="form-control" />
+        <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"/>
+        </span>
     </div>
 </template>
 
