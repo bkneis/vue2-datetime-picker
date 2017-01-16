@@ -1,7 +1,10 @@
 <template>
-    <div :class='styleClass'>
-        <input type='text' class="form-control" />
-        <span class="input-group-addon">
+    <div :class='styleClass' style="width: 100%;">
+        <span v-if="label" class="input-group-addon">
+            {{label}}
+        </span>
+        <input type='text' class="form-control"  title=""/>
+        <span v-if="icon" class="input-group-addon">
             <span class="glyphicon glyphicon-calendar"/>
         </span>
     </div>
@@ -12,7 +15,13 @@ import $ from 'jquery';
 import 'eonasdan-bootstrap-datetimepicker';
 export default {
     name : 'date-time',
-    props : { options : {}, value : { default : '' }, class : {} },
+    props : {
+        options : {},
+        value : { default : '' },
+        class : {},
+        icon : { default : false },
+        label : {}
+    },
     computed : {
         styleClass() {
             let classes = {
@@ -37,15 +46,14 @@ export default {
             through the props will initialise the start value for the input.
         */
         let el = $(this.$el).find('input').first();
-	    let vm = this;
-        el.datetimepicker(vm.options);
+        el.datetimepicker(thi.options);
 	    el.on('dp.change', (val) => {
-	        vm.$emit('input', val);
+	        this.$emit('input', val);
         });
-	    el.data("DateTimePicker").date(vm.value);
+	    el.data("DateTimePicker").date(this.value);
     }
 }
 </script>
-<style scope>
+<style scoped>
 @import '../node_modules/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css';
 </style>
