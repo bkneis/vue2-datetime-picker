@@ -17,14 +17,14 @@ export default {
     props : { options : {}, value : { default : '' } },
     mounted() {
         /**
-        The jquery selector gets the root element the vue component is attached to,
-        then filters down to the first text input, which in this template, will always
-        be the datetime input.
+            The jquery selector gets the root element the vue component is attached to,
+            then filters down to the first text input, which in this template, will always
+            be the datetime input.
 
-        It then initialises it with any options passed through the options prop,
-        emits an input event when the date input changes, allowing the component to
-        be bound to vue reactivity system via v-model. Lastly, any initial value passed
-        through the props will initialise the start value for the input.
+            It then initialises it with any options passed through the options prop,
+            emits an input event when the date input changes, allowing the component to
+            be bound to vue reactivity system via v-model. Lastly, any initial value passed
+            through the props will initialise the start value for the input.
         */
         let el = $(this.$el).find('input').first();
 	    let vm = this;
