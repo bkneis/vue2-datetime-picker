@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import jQuery from 'jquery';
+import $ from 'jquery';
 import 'eonasdan-bootstrap-datetimepicker';
 export default {
     name : 'date-time',
