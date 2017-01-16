@@ -46,7 +46,7 @@ export default {
             through the props will initialise the start value for the input.
         */
         let el = $(this.$el).find('input').first();
-        el.datetimepicker(thi.options);
+        el.datetimepicker(this.options);
 	    el.on('dp.change', (val) => {
 	        this.$emit('input', val);
         });
