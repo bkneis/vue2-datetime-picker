@@ -1,5 +1,5 @@
 <template>
-    <div class='input-group date'>
+    <div :class='styleClass'>
         <input type='text' class="form-control" />
         <span class="input-group-addon">
             <span class="glyphicon glyphicon-calendar"/>
@@ -12,7 +12,19 @@ import $ from 'jquery';
 import 'eonasdan-bootstrap-datetimepicker';
 export default {
     name : 'date-time',
-    props : { options : {}, value : { default : '' } },
+    props : { options : {}, value : { default : '' }, class : {} },
+    computed : {
+        styleClass() {
+            let classes = {
+                'input-group' : true,
+                'date' : true
+            };
+            for (let style in this.class) {
+                classes[style] = true;
+            }
+            return classes;
+        }
+    },
     mounted() {
         /**
             The jquery selector gets the root element the vue component is attached to,
