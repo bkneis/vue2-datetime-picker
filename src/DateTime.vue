@@ -1,12 +1,10 @@
 <template>
-    <div class='col-sm-6'>
-        <div class="form-group">
-            <div class='input-group date'>
-                <input type='text' class="form-control" />
-                <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-calendar"/>
-                </span>
-            </div>
+    <div class="form-group">
+        <div class='input-group date'>
+            <input type='text' class="form-control" />
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"/>
+            </span>
         </div>
     </div>
 </template>
@@ -16,7 +14,7 @@ import $ from 'jquery';
 import 'eonasdan-bootstrap-datetimepicker';
 export default {
     name : 'date-time',
-    props : { title : {}, options : {}, value : { default : '' } },
+    props : { options : {}, value : { default : '' } },
     mounted() {
         /**
         The jquery selector gets the root element the vue component is attached to,
@@ -28,12 +26,13 @@ export default {
         be bound to vue reactivity system via v-model. Lastly, any initial value passed
         through the props will initialise the start value for the input.
         */
-        $(this.$el).children(':text').first()
-            .datetimepicker(this.options)
-            .on('dp-change', (val) => {
-                this.$emit('input', val);
-            })
-            .value(this.value);
+        let el = $(this.$el).find('input').first();
+	    let vm = this;
+        el.datetimepicker(vm.options);
+	    el.on('dp.change', (val) => {
+	        vm.$emit('input', val);
+        });
+	    el.data("DateTimePicker").date(vm.value);
     }
 }
 </script>
