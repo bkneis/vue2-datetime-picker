@@ -49,9 +49,11 @@ export default {
         el.datetimepicker(this.options);
 	    el.on('dp.change', (val) => {
 	        this.$emit('input', val.date);
-	        //this.$emit('input', el.data("DateTimePicker").date());
         });
-        console.log(this.value);
+	    el.data("DateTimePicker").date(this.value);
+    },
+    updated() {
+        let el = $(this.$el).find('input').first();
 	    el.data("DateTimePicker").date(this.value);
     }
 }
