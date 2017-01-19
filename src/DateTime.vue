@@ -51,9 +51,11 @@ export default {
 	    el.on('dp.change', (val) => {
 	        this.$emit('input', val.date);
         });
-        console.log(moment(this.value));
-        el.data("DateTimePicker").date(moment(this.value));
-	    //el.val(this.value);
+    },
+    watch : {
+        value : function(val) {
+            el.data("DateTimePicker").date(moment(val));
+        }
     }
 }
 </script>
