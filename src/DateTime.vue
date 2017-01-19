@@ -13,6 +13,7 @@
 <script>
 import $ from 'jquery';
 import 'eonasdan-bootstrap-datetimepicker';
+import moment from 'moment';
 export default {
     name : 'date-time',
     props : {
@@ -36,7 +37,7 @@ export default {
     },
     mounted() {
         /**
-            The jquery selector gets the root element the vue component is attached to,
+            The jquery selector gets the root element that the vue component is attached to,
             then filters down to the first text input, which in this template, will always
             be the datetime input.
 
@@ -50,11 +51,9 @@ export default {
 	    el.on('dp.change', (val) => {
 	        this.$emit('input', val.date);
         });
-	    el.data("DateTimePicker").date(this.value);
-    },
-    updated() {
-        let el = $(this.$el).find('input').first();
-	    el.data("DateTimePicker").date(this.value);
+        console.log(moment(this.value));
+        el.data("DateTimePicker").date(moment(this.value));
+	    //el.val(this.value);
     }
 }
 </script>
