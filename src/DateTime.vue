@@ -25,7 +25,7 @@ export default {
     },
     data() {
         return {
-            el : $(this.$el).find('input').first()
+            el : null
         }
     },
     computed : {
@@ -51,6 +51,7 @@ export default {
             be bound to vue reactivity system via v-model. Lastly, any initial value passed
             through the props will initialise the start value for the input.
         */
+        this.el = $(this.$el).find('input').first();
         this.el.datetimepicker(this.options);
 	    this.el.on('dp.change', (val) => {
 	        /**
