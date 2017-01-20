@@ -61,7 +61,12 @@ export default {
             } else {
                 date = moment(val);
             }
-            el.data("DateTimePicker").date(date);
+            try {
+                el.data("DateTimePicker").date(date);
+            } catch (e) {
+                console.error(e);
+                el.data("DateTimePicker").date(null);
+            }
         }
     }
 }
