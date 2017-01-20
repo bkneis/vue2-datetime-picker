@@ -89,7 +89,9 @@ export default {
         }
     },
     watch : {
-        value : this.updateInput
+        value : function(val) {
+            this.updateInput(val);
+        }
     }
 }
 </script>
