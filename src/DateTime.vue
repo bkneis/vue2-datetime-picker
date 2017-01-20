@@ -59,7 +59,7 @@ export default {
 	        }
 	        this.$emit('input', val.date);
         });
-        let date = this.formatDate(val);
+        let date = this.formatDate(this.value);
         try {
             el.data("DateTimePicker").date(date);
         } catch (e) {
