@@ -59,6 +59,13 @@ export default {
 	        }
 	        this.$emit('input', val.date);
         });
+        let date = this.formatDate(val);
+        try {
+            el.data("DateTimePicker").date(date);
+        } catch (e) {
+            console.error(e);
+            el.data("DateTimePicker").date(null);
+        }
     },
     methods : {
         formatDate(val) {
