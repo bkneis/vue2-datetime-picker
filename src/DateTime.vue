@@ -59,13 +59,7 @@ export default {
 	        }
 	        this.$emit('input', val.date);
         });
-        let date = this.formatDate(this.value);
-        try {
-            el.data("DateTimePicker").date(date);
-        } catch (e) {
-            console.error(e);
-            el.data("DateTimePicker").date(null);
-        }
+        this.updateInput(this.value);
     },
     methods : {
         formatDate(val) {
@@ -79,10 +73,8 @@ export default {
                 }
             }
             return date;
-        }
-    },
-    watch : {
-        value : function(val) {
+        },
+        updateInput(val) {
             let el = $(this.$el).find('input').first();
             let date = this.formatDate(val);
             try {
@@ -92,6 +84,9 @@ export default {
                 el.data("DateTimePicker").date(null);
             }
         }
+    },
+    watch : {
+        value : this.updateInput
     }
 }
 </script>
