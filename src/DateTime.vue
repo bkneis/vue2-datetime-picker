@@ -55,7 +55,13 @@ export default {
     watch : {
         value : function(val) {
             let el = $(this.$el).find('input').first();
-            el.data("DateTimePicker").date(moment(val));
+            let date;
+            if (val === "") {
+                date = null;
+            } else {
+                date = moment(val);
+            }
+            el.data("DateTimePicker").date(date);
         }
     }
 }
