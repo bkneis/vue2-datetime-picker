@@ -23,6 +23,11 @@ export default {
         icon : { default : false },
         label : {}
     },
+    data() {
+        return {
+            el : $(this.$el).find('input').first()
+        }
+    },
     computed : {
         styleClass() {
             let classes = {
@@ -46,9 +51,8 @@ export default {
             be bound to vue reactivity system via v-model. Lastly, any initial value passed
             through the props will initialise the start value for the input.
         */
-        let el = $(this.$el).find('input').first();
-        el.datetimepicker(this.options);
-	    el.on('dp.change', (val) => {
+        this.el.datetimepicker(this.options);
+	    this.el.on('dp.change', (val) => {
 	        /**
 	         * Datetime picker plugin returns false if no date is set, this is not
 	         * really an accurate representation of the inputs value, so we report
@@ -75,13 +79,12 @@ export default {
             return date;
         },
         updateInput(val) {
-            let el = $(this.$el).find('input').first();
             let date = this.formatDate(val);
             try {
-                el.data("DateTimePicker").date(date);
+                this.el.data("DateTimePicker").date(date);
             } catch (e) {
                 console.error(e);
-                el.data("DateTimePicker").date(null);
+                this.el.data("DateTimePicker").date(null);
             }
         }
     },
