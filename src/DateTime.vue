@@ -49,21 +49,35 @@ export default {
         let el = $(this.$el).find('input').first();
         el.datetimepicker(this.options);
 	    el.on('dp.change', (val) => {
+	        /**
+	         * Datetime picker plugin returns false if no date is set, this is not
+	         * really an accurate representation of the inputs value, so we report
+	         * this back to v-model as null.
+	         */
+	        if (! val) {
+	            val = null;
+	        }
 	        this.$emit('input', val.date);
         });
     },
-    watch : {
-        value : function(val) {
-            let el = $(this.$el).find('input').first();
+    methods : {
+        formatDate(val) {
             let date;
             if (val === "") {
                 date = null;
             } else {
                 date = moment(val);
+                if (! date.isValid()) {
+                    date = null;
+                }
             }
-            if (! date.isValid()) {
-                date = null;
-            }
+            return date;
+        }
+    },
+    watch : {
+        value : function(val) {
+            let el = $(this.$el).find('input').first();
+            let date = this.formatDate(val);
             try {
                 el.data("DateTimePicker").date(date);
             } catch (e) {
