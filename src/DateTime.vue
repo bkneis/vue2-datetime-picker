@@ -61,6 +61,9 @@ export default {
             } else {
                 date = moment(val);
             }
+            if (! date.isValid()) {
+                date = null;
+            }
             try {
                 el.data("DateTimePicker").date(date);
             } catch (e) {
